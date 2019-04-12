@@ -1,0 +1,208 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	 
+	<title></title>
+	<script src="../../js/jquery.js"></script>
+    <script src="../../js/aes.js"></script>
+    <script src="../../js/chart.js"></script>
+    <script src="../../js/utils.js"></script>
+	<script src="../../js/app.js"></script>
+    <script src="../../js/stats.js"></script> 
+<link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="../../css/jquery-ui-custom.0.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../../css/app.css"/>
+
+</head>
+
+<body style="float: left;">
+
+<div class="wrapper-holder" id="wrapper-holder">
+<div id="wrapper">
+
+
+<div class="wrapper_game_menu">
+    <input id="tab1" type="radio" name="tabs" checked> 
+    <label for="tab1" title="Home"><script>document.write(parent.window._t("Home"));</script></label>
+ 
+    <input id="tab2" type="radio" name="tabs">
+    <label for="tab2" title="Stats"><script>document.write(parent.window._t("Stats"));</script></label>
+
+    <input id="tab3" type="radio" name="tabs">
+    <label for="tab3" title="Settings"><script>document.write(parent.window._t("Settings"));</script></label>
+</div>
+<section id="content-tab1">
+    <div id="keys">
+        <div class="sitekey_wrap">
+            <span>Site Key (public):</span> 
+            <div class="img_sitekey">
+                <div id="help_sitekey" >
+                    <script>
+                        document.write(parent.window._t("The Site Key is used to pay your rewards. Be careful and enter the correct Site Key. It is on him that you will receive a reward from all the partners that you invite.")+" ");
+                        document.write(parent.window._t("You should get it here"));
+                    </script>
+                    <a target="coinhive" href="https://coinhive.com/settings/sites">https://coinhive.com/settings/sites</a>
+                </div>
+            </div>
+            <input type="text" id="sitekey"/ >
+        </div>
+        <div class="sitekey_wrap">
+            <span>Secret Key (private):</span> 
+            <div class="img_secretkey" data-title="Польский костел" >
+                <div id="help_secretkey">
+                    <script>
+                        document.write(parent.window._t("The Secret Key is used for tracking statistics. Don't tell anyone your key."));
+                        document.write(parent.window._t("You should get it here"));
+                    </script>
+                    <a target="coinhive" href="https://coinhive.com/settings/sites">https://coinhive.com/settings/sites</a>
+                </div>
+            </div>
+            <input type="text" id="secretkey"/>
+        </div>
+
+    </div>
+    <div class="invite_partner">
+        <a class="btn pure-button" id="invite_partner_btn"><script>document.write(parent.window._t("INVITE PARTNERS"));</script></a>
+    </div>
+
+
+    <div class ="btn pure-button" id="btn_start_miner">
+        <script>document.write(parent.window._t("START"));</script>
+    </div>
+    <div class ="btn pure-button lock_btn" id="btn_stop_miner">
+        <script>document.write(parent.window._t("STOP"));</script>
+    </div>
+    <div class="section min_stats">
+        <div class="row">
+            <div class="three columns">
+                <h4 class="number-label"><script>document.write(parent.window._t("Hashes/s"));</script></h4>
+                <h2 class="hashesPerSecond">0 </h2>
+            </div>
+            <div class="three columns">
+                <h4 class="number-label"><script>document.write(parent.window._t("Total Hashes"));</script></h4>
+                <h2 class="hashesTotal">0</h2>
+            </div>
+            <div class="three columns">
+                <h4 class="number-label"><script>document.write(parent.window._t("Total Paid"));</script></h4>
+                <h2 class="xmrPaid">
+                    0 <span class="unit"> XMR </span>
+                </h2>
+            </div>
+            <div class="three columns">
+                <h4 class="number-label"><script>document.write(parent.window._t("Pending Payments"));</script></h4>
+                <h2 class="xmrPending">
+                    0 <span class="unit"> XMR </span>
+                </h2>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="content-tab2">
+<div id="stats_hash">
+
+    <div class="section">
+        <div class="row">
+            <div class="three columns">
+                <h4 class="number-label"><script>document.write(parent.window._t("Hashes/s"));</script></h4>
+                <h2 id="hashesPerSecond">0 </h2>
+            </div>
+            <div class="three columns">
+                <h4 class="number-label"><script>document.write(parent.window._t("Total Hashes"));</script></h4>
+                <h2 id="hashesTotal">0</h2>
+            </div>
+            <div class="three columns">
+                <h4 class="number-label"><script>document.write(parent.window._t("Total Paid"));</script></h4>
+                <h2 id="xmrPaid">
+                    0 <span class="unit"> XMR </span>
+                </h2>
+            </div>
+            <div class="three columns">
+                <h4 class="number-label"><script>document.write(parent.window._t("Pending Payments"));</script></h4>
+                <h2 id="xmrPending">
+                    0 <span class="unit"> XMR </span>
+                </h2>
+            </div>
+        </div>
+    </div>
+    <canvas id="myChart" width="400" height="200"></canvas>
+</div>
+</section>
+<script type="text/javascript">
+
+    if(localStorage.getItem('my_sitekey'))
+    {
+        if(localStorage.getItem('my_sitekey').length == 32)
+        {
+            $('input#sitekey').val(localStorage.getItem('my_sitekey'));
+        }    
+    }
+    if(localStorage.getItem('my_secretkey'))
+    {
+        if(localStorage.getItem('my_secretkey').length == 32)
+        {
+            $('input#secretkey').val(localStorage.getItem('my_secretkey'));
+        }    
+    }
+    $("input#sitekey").on('input',function(e){
+        if($('input#sitekey').val().replace(/\s+/g, '').length == 32)
+        {
+            localStorage.setItem('my_sitekey', $('input#sitekey').val().replace(/\s+/g, ''));
+        }
+    });
+    $("input#secretkey").on('input',function(e){
+        if($('input#secretkey').val().replace(/\s+/g, '').length == 32)
+        {
+            localStorage.setItem('my_secretkey', $('input#secretkey').val().replace(/\s+/g, ''));
+        }
+    });
+    $('#btn_start_miner').on('click', function()
+    {
+        if(!$('#btn_start_miner').hasClass("lock_btn"))
+        {
+            if($('input#sitekey').val().replace(/\s+/g, '').length == 32)
+            {
+                parent.window.start_miner($('input#sitekey').val().replace(' ',''), 1, 0);
+            }
+            else
+            {
+                parent.window.alert_window(parent.window._t("Error! Please check for correctness")+" Site Key.");
+            } 
+        }
+    });
+    $('#btn_stop_miner').on('click', function()
+    {
+        if(!$('#btn_stop_miner').hasClass("lock_btn"))
+        {
+            parent.window.stop_miner();
+        }
+    });
+    $('#invite_partner_btn').on('click', function()
+    {
+        if($('input#sitekey').val().replace(/\s+/g, '').length == 32)
+        {
+            if(valid_auth_key(localStorage.getItem('my_auth_key')))
+            {
+                generat_auth_key();
+            }
+            else
+            {
+                alert(_t("Error! Invalid activation key."));
+            }
+        }
+        else
+        {
+            parent.window.alert_window(parent.window._t("Error! Please check for correctness")+" Site Key.");
+        }        
+    });
+
+	resize_iframe();
+
+</script>
+
+</div>
+</div>
+</body></html>

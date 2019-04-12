@@ -1,0 +1,36 @@
+{
+  "name": "RevelHash",
+  "chromium-args": "--data-path='./revelhash-data-temp/'",
+  "main": "index.html",
+  "version": "1.0.0",
+  "window": {
+    "transparent": false,
+    "menubar": false,
+    "toolbar": true,
+    "min_width" : 600,
+    "min_height" : 400,
+    "width": 800,
+    "height": 600,
+    "no-edit-menu": true,
+    "frame": false,
+    "resizable": true,
+    "icon": "./img/head_anshtein.png"
+  },
+  "dependencies": {
+    "auto-launch": "^5.0.5",
+    "body-parser": "^1.17.1",
+    "chart.js": "^2.7.2",
+    "cookie-parser": "^1.4.3",
+    "debug": "^2.6.6",
+    "ejs-locals": "^1.0",
+    "express": "^4.15.2",
+    "hbs": "^4.0.1",
+    "jquery": "^3.2.1",
+    "keymaster": "^1.6.2",
+    "lodash": "^4.17.4",
+    "morgan": "^1.8.1",
+    "request": "^2.81.0",
+    "serve-favicon": "^2.4.2",
+    "strip": "^3.0.0"
+  }
+}
