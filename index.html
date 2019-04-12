@@ -1,0 +1,323 @@
+﻿
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>RevelHash</title>
+<link rel="shortcut icon" href="./img/head_anshtein32.png" type="image/x-icon">
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+<!--<link rel='stylesheet prefetch' href='./css/stars.css'>-->
+<link rel="stylesheet" href="./css/jquery-ui-custom.0.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="./css/app.css"/>
+    <script src="./js/jquery.js"></script>
+	
+	<script src="./lang/ru.js"></script>
+	<script src="./lang/zh.js"></script>
+	<script src="./lang/zh_l.js"></script>
+	<script src="./lang/de.js"></script>
+	<script src="./lang/fr.js"></script>
+	<script src="./lang/ja.js"></script>
+	<script src="./lang/pt.js"></script>
+	<script src="./lang/ko.js"></script>
+	<script src="./lang/es.js"></script>
+	<script src="./lang/it.js"></script>
+	<script src="./lang/pl.js"></script>
+	<script src="./lang/tr.js"></script>
+	<script src="./lang/th.js"></script> 
+
+	<script src="./js/langs/control.js"></script>
+	<script src="./js/coinhive.min.js"></script>
+	<script src="./js/aes.js"></script>
+	<script src="./js/app.js"></script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+
+
+
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter45925296 = new Ya.Metrika({
+                    id:45925296,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/45925296" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</head>
+<body>
+<div id="top_menubar" style="-webkit-app-region: drag">
+	<h1>revelhash</h1>
+	<span class="menubar_minimize"></span><span class="menubar_maximize"></span><span class="menubar_close"></span>
+</div>
+
+<div id="major_body" class="big-center">
+<div class="col1 nav">
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+  		if(localStorage.getItem('my_auth_key'))
+  		{
+			var thisForm = this;		
+			var url = "./pages/Home/index.html";
+			$.ajax({
+			 url: url,
+			 type: "GET",
+			 dataType: "html",
+			 success: function(data){   
+			   $("#wrapper").html(data);
+			 },
+			 error:function(XHR){
+				console.log(url);
+			} 
+		   }); 
+  		}
+  		else
+  		{
+  			$('#auth_window').show();
+  		}
+
+  });
+
+</script>
+
+</div>
+
+<div class="col2 main" id="col2_screen" role="main">
+<div class="home-top">
+    <!--<h1 class="home-title"><script>document.write(parent.window._t("RevelHash"));</script></h1>-->
+	<select id="lang_select">
+		<option>english</option>
+		<option>русский</option>
+		<option>繁体中文</option>
+		<option>简体中文</option>
+		<option>deutsche</option>
+		<option>française</option>
+		<option>日本語</option>
+		<option>portugues</option>
+		<option>português brasileiro</option>
+		<option>한국어</option>
+		<option>español</option>
+		<option>italiano</option>
+		<option>polski</option>
+		<option>türkçe</option>
+		<option>ไทย</option>
+	</select>
+</div>
+
+<div class="wrapper-holder" id="wrapper-holder">
+
+<div id="wrapper">
+
+
+</div>
+<div id="wrapper_music" style="display: none;">
+
+	<div class="train_ifarme">
+	 <iframe src="pages/Music/page.html" align="center" allowtransparency="true" seamless scrolling="no">
+	 </iframe>
+	</div>
+
+</div>
+<div id="debug_log">
+	
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+<style>
+#background_quest
+{
+	position: absolute;
+	width: 100%;
+	height:100%;
+	opacity: 0.8;
+	background: -webkit-linear-gradient(90deg, #161616 50%, #242424 100%);
+	top: 0;
+	z-index: 199;
+    margin: 10px;
+}
+.quest_revew, .alert_window, #auth_window
+{
+	position: absolute;
+    padding: 30px;
+    top: 50%;
+    margin-top: -250px;
+    left: 50%;
+    margin-left: -350px;
+    z-index: 199;
+    background: -webkit-linear-gradient(90deg, #161616 50%, #1d2639 100%);
+    box-shadow: 0px 0px 15px rgba(29, 38, 57, 0.8);
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+.alert_window, #auth_window
+{
+	position: fixed;
+    width: 600px;
+    margin-left: -300px;	
+}
+
+.question_revew, .alert_window_ok, #auth_window_ok
+{
+	margin-top: 30px !important;
+}
+
+</style>
+		<div id="background_quest" style="display:none;"></div>
+		<div id="alert_window" style="display:none;" class="alert_window">
+			<div> </div>
+			<a id="alert_window_ok" class="btn pure-button alert_window_ok"><script>document.write(_t("OK"));</script></a>
+		</div>
+		<div id="auth_window" style="display:none;" class="auth_window">
+			<h2><script>document.write(_t("Enter your activation key"));</script></h2>
+			<textarea></textarea></br>
+			<a id="auth_window_ok" class="btn pure-button auth_window_ok"><script>document.write(_t("OK"));</script></a>
+		</div>
+
+		<script>
+
+		
+		$('#alert_window_ok').click(function()
+		{
+			$('#alert_window').hide();
+			$('#background_quest').hide();
+		});	
+		$('#auth_window_ok').click(function()
+		{
+			if(valid_auth_key($('#auth_window textarea').val().replace(/\s+/g, '')))
+			{
+				localStorage.setItem('my_auth_key', $('#auth_window textarea').val().replace(/\s+/g, ''));
+			}
+			else
+			{
+				alert(_t("Error! Invalid activation key."));
+			}
+		});		
+		try
+		{
+
+			win.focus();
+			//debug_log("process.execPath "+process.execPath.substr(0, process.execPath.length - 4)+'1.exe');
+			
+			//win.showDevTools();
+			//win.maximize();
+			//win.x = 4000;
+
+			for(var args = 0; args<gui.App.argv.length; args++)
+			{
+				if(gui.App.argv[args] == "--autolaunch")
+				{
+					
+					//win.hide();
+					/*
+					tray = new gui.Tray({ icon: 'icon.png' });
+					tray.on('click', function() {
+						win.show();
+						this.remove();
+						tray = null;   
+					});*/
+
+				}
+			}
+
+			gui.App.on('open', function(args) {
+				win.show();
+				alert(args);
+			});
+			win.on('minimize', function () 
+			{
+				minimize_win = true;
+			});
+			win.on('maximize', function () 
+			{
+				maximize_win = true;
+				localStorage.setItem('maximize_win', true);
+				win.focus();
+			});
+			win.on('restore', function () 
+			{
+				if(!minimize_win)
+				{
+					maximize_win = false;
+					localStorage.setItem('maximize_win', false)
+				}
+				else
+				{
+					minimize_win = false;
+				}
+				//win.focus();
+			});
+			win.on('close', function () 
+			{/*
+				win.hide();
+
+				tray = new gui.Tray({ icon: 'icon.png' });
+
+				tray.on('click', function() {
+					win.show();
+					this.remove();
+					tray = null;
+				});*/
+				//win.close(true);
+			});
+
+		}
+		catch(e)
+		{
+			//debug_log(e+"sdfsd");
+		}
+
+		$('#background_quest').css('width', $(window).width());
+		$('#background_quest').css('height', $(window).height()-20);
+		
+		if($('#major_body').height() < $(window).height())
+    	$('#major_body').css('height', $(window).height()-20);
+
+    	$('.menubar_maximize').on('click', function()
+    	{
+    		if(maximize_win == 'false')
+    		{
+    			win.maximize();
+    		}
+    		else
+    		{
+    			win.restore();
+    		}
+    	});
+    	$('.menubar_minimize').on('click', function()
+    	{
+    		win.minimize();
+    		
+    	});
+		$('.menubar_close').on('click', function()
+    	{
+			win.close(true);
+    	});
+		</script>
+</body>
+</html>
