@@ -1,0 +1,20 @@
+﻿var jsonLang_ru = {
+	"Home": "Главная",
+	"Stats": "Статистика",
+	"OK" : "ОК",
+	"Error! Please check for correctness" : "Ошибка! Пожалуйста проверьте правильность",
+	"The Site Key is used to pay your rewards. Be careful and enter the correct Site Key. It is on him that you will receive a reward from all the partners that you invite." : "Site Key используется для выплаты вашего вознаграждения. Будьте внимательны и введите правильный Site Key. Именно на него вы будете получать вознаграждение от всех партнёнов, которых вы пригласите.",
+	"You should get it here" : "Вы должны получить его здесь",
+	"The Secret Key is used for tracking statistics. Don't tell anyone your key." : "Secret Key используется для отслеживания статистики. Никому не сообщайте ваш ключ.",
+	"Activation key for your partners:" : "Ключ активации для ваших парнёров:",
+	"The pool-server reported an error" : "Пул-сервер сообщил об ошибке",
+	"Enter your activation key" : "Введите ваш ключ активации",
+	"Error! Invalid activation key." : "Ошибка! Неверный ключ активации.",
+	"INVITE PARTNERS" : "ПРИГЛАШЕНИЕ ПАРТНЕРОВ",
+	"Hashes/s" : "Хеши/с",
+	"Total Hashes" : "Всего хешей",
+	"Total Paid" : "Общая Сумма Выплат",
+	"Pending Payments" : "В Ожидании Выплаты",
+	"Start" : "Старт",
+	"Stop" : "Стоп"
+};
